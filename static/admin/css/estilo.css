@@ -1,0 +1,15 @@
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    font-size: 11px;
+    min-width: 11%;
+
+    margin: 4px 2px;
+}
+input[type=text]{
+  margin-left:1.5%;
+  width: 42%;
+  background-color: white;
+}
