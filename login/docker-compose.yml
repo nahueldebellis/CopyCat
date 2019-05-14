@@ -1,0 +1,41 @@
+version: "3"
+services:
+
+  db:
+    image: postgres
+    networks:
+      - backend
+  
+  web:
+    build: .
+    command: gunicorn mann.wsgi:application --bind 0.0.0.0:8000 
+    volumes:
+      - .:/copycat  
+      - static:/copycat/static
+      - media:/copycat/media
+    networks:
+      - backend
+    environment:
+      - SQL_USER:postgres
+      - SQL_PASSWORD:postgres
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./configs/:/etc/nginx/conf.d
+      - static:/copycat/static
+      - media:/copycat/media
+    networks:
+      - backend
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+volumes:
+  static:
+  media:
+networks:
+  backend:
+    driver: bridge  
