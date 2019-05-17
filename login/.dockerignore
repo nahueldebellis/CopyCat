@@ -1,2 +1,2 @@
-lib/
-entregable/
+Dockerfile
+docker-compose.yml

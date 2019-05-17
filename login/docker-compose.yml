@@ -3,11 +3,13 @@ services:
 
   db:
     image: postgres
+    container_name: db_welcome
     networks:
       - backend
   
   web:
     build: .
+    container_name: web_welcome
     command: gunicorn mann.wsgi:application --bind 0.0.0.0:8000 
     volumes:
       - .:/copycat  
@@ -23,6 +25,7 @@ services:
 
   nginx:
     image: nginx:latest
+    container_name: nginx_welcome
     volumes:
       - ./configs/:/etc/nginx/conf.d
       - static:/copycat/static
