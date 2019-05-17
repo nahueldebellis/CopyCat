@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class Register extends React.Component {
+  render() {
+    return(
+      <form action="http://localhost/welcome/register/" method="POST">
+        <div>
+          
+          <input type="text" size="20" maxlength="30" placeholder="Nombre" name="nombre" autoComplete="off" />
+          <input type="text" size="20" maxlength="30" placeholder="Apellido" name="apellido" autoComplete="off"/>
+          <input type="text" size="20" maxlength="30" placeholder="Fecha de nacimiento" name="date" autoComplete="off"/>
+          <input type="text" size="20" maxlength="30" placeholder="E-mail" name="email" autoComplete="off"/>
+          <input type="text" size="20" maxlength="30" placeholder="Gender" name="genero" autoComplete="off" />
+          <input type="password" size="20" maxlength="30" placeholder="Contraseña" name="password" autoComplete="off"/>
+          <input type="password" size="20" maxlength="30" placeholder="Repetir Contraseña" name="repetircontraseña" autoComplete="off"/>
+          
+          <input type='submit' value="Submit" />
+
+
+        </div>
+
+      </form>
+    );
+  }
 }
 
-export default App;
+export default Register;
