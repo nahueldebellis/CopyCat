@@ -4,8 +4,6 @@ services:
   react:
     build: .
     container_name: react_design
-    volumes:
-      - .:/design
     ports:
       - "8080:3000"
     command: nodemon -L start
