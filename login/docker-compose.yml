@@ -11,10 +11,6 @@ services:
     build: .
     container_name: web_welcome
     command: gunicorn mann.wsgi:application --bind 0.0.0.0:8000 
-    volumes:
-      - .:/copycat  
-      - static:/copycat/static
-      - media:/copycat/media
     networks:
       - backend
     environment:
@@ -23,22 +19,6 @@ services:
     depends_on:
       - db
 
-  nginx:
-    image: nginx:latest
-    container_name: nginx_welcome
-    volumes:
-      - ./configs/:/etc/nginx/conf.d
-      - static:/copycat/static
-      - media:/copycat/media
-    networks:
-      - backend
-    ports:
-      - "80:80"
-    depends_on:
-      - web
-volumes:
-  static:
-  media:
 networks:
   backend:
     driver: bridge  
