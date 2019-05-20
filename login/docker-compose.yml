@@ -21,19 +21,6 @@ services:
     depends_on:
       - db
 
-  nginx:
-    image: nginx:latest
-    container_name: nginx_welcome
-    volumes:
-      - ./configs/:/etc/nginx/conf.d
-      - static:/copycat/static
-      - media:/copycat/media
-    networks:
-      - backend
-    ports:
-      - "80:80"
-    depends_on:
-      - web
   pureftpd:
     image: vimagick/pure-ftpd
     ports:
