@@ -1,0 +1,29 @@
+version: "3"
+services: 
+  web:
+    build: .
+    container_name: web_songs
+    command: gunicorn mann.wsgi:application --bind 0.0.0.0:8000 
+    volumes:
+      - .:/copycat  
+    networks:
+      - backend
+    depends_on:
+      - pureftpd
+
+  pureftpd:
+    image: vimagick/pure-ftpd
+    container_name: ftp_songs
+    networks:
+      - backend
+    ports:
+      - "21:21"
+    volumes:
+      - ./data/ftpuser:/home/ftpuser
+      - ./data/pure-ftpd:/etc/pure-ftpd
+    privileged: true
+    restart: always
+
+networks:
+  backend:
+    driver: bridge  
