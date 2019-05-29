@@ -9,9 +9,9 @@ services:
     networks:
       - backend
     depends_on:
-      - pureftpd
+      - ftp
 
-  pureftpd:
+  ftp:
     image: vimagick/pure-ftpd
     container_name: ftp_songs
     networks:
@@ -19,8 +19,7 @@ services:
     ports:
       - "21:21"
     volumes:
-      - ./data/ftpuser:/home/ftpuser
-      - ./data/pure-ftpd:/etc/pure-ftpd
+      - ./data/copycat:/home/copycat
     privileged: true
     restart: always
 
