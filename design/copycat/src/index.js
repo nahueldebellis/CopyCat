@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Register from './App';
+import Register from './Register/Register';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<Register />, document.getElementById('root'));
