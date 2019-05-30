@@ -6,6 +6,12 @@ services:
     container_name: react_design
     volumes:
       - .:/design
+    networks:
+      - design
     ports:
       - "8080:3000"
     command: nodemon -L start
+
+networks:
+  design:
+    driver: bridge
