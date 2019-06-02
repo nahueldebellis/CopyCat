@@ -12,7 +12,7 @@ class Login extends React.Component {
       return(
         <div>
           <img src={ fondo } alt="fondiu" id="fondex"/>
-          <form action="/welcome/login/" id="formulario" method="POST">
+          <form action="http:://localhost:88/welcome/login/" id="formulario" method="POST">
             <div id="contenedor">  
               
               <input type="text" size="20" maxLength="30" placeholder="E-mail" name="email" autoComplete="off" required="true" />

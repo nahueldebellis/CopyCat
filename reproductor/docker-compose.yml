@@ -5,7 +5,9 @@ services:
     container_name: web_songs
     command: gunicorn mann.wsgi:application --bind 0.0.0.0:8000 
     volumes:
-      - .:/copycat  
+      - .:/copycat
+    ports:
+      - "80:8000"
     networks:
       - backend
     depends_on:

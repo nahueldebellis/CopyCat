@@ -7,8 +7,8 @@ class Users(models.Model):
     confirmation = models.BooleanField(default=False)
     born_date = models.DateField(null=True)
     sex = models.CharField(max_length=10, default='nan')
-    email = models.CharField(max_length=20, default='nan')
-    password = models.CharField(max_length=20, default='nan')
+    email = models.CharField(max_length=50, default='nan')
+    password = models.CharField(max_length=200, default='nan')
     
     def __str__(self):
         return '%s %s' % (self.firstname, self.lastname)

@@ -1,0 +1,9 @@
+version: "3"
+services:
+  nginx:
+    build: .
+    container_name: nginx_copycat
+    volumes:
+      - ./config/conf.d:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"

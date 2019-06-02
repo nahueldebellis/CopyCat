@@ -12,7 +12,9 @@ services:
     container_name: web_welcome
     command: gunicorn mann.wsgi:application --bind 0.0.0.0:8000 
     volumes:
-      - .:/copycat  
+      - .:/copycat
+    ports:
+      - "88:8000" 
     networks:
       - backend
     environment:

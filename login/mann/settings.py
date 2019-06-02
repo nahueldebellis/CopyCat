@@ -25,7 +25,7 @@ SECRET_KEY = 'z1p0d!la#!ci&^tm=d)k+f!cyv6yc^@f&=c+pnneds*b!pi93j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['copycat.sytes.net', 'copycat']
+ALLOWED_HOSTS = ['copycat.sytes.net', 'localhost']
 
 
 # Application definition
