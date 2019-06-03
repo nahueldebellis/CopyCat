@@ -1,9 +1,9 @@
 version: "3"
-services: 
+services:
   web:
     build: .
     container_name: web_songs
-    command: gunicorn mann.wsgi:application --bind 0.0.0.0:8000 
+    command: gunicorn mann.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/copycat
     ports:
@@ -13,7 +13,7 @@ services:
     depends_on:
       - ftp
 
-  ftp:
+  ftp-song:
     image: vimagick/pure-ftpd
     container_name: ftp_songs
     networks:
@@ -27,4 +27,4 @@ services:
 
 networks:
   backend:
-    driver: bridge  
+    driver: bridge
