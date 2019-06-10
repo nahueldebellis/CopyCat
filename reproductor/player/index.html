@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="http://localhost/player/songs/" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="csrfmiddlewaretoken" id="h" value="FHoHSlA6NcIuxWZrcY60RuGSDbsZHBDXdK3UQHbRkmPuLSzmSoBGDpGEGLSV61cR">
+        name: <input type="text" name='name'>
+        artist: <input type="text" name="artist" id="">
+        gender: <input type="text" name="gender" id="">
+        album: <input type="text" name="album" id="">
+        image: <input type="file" name='image' id="image" alt="asd">
+        song : <input type="file" name="file" id="file">
+        <input type="submit" value="submit">
+    </form>
+   
+</body>
+</html>

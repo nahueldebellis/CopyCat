@@ -11,9 +11,10 @@ services:
     networks:
       - backend
     depends_on:
-      - ftp
+      - ftp-song
 
   ftp-song:
+    #pure-pw useradd copycat -f /etc/pure-ftpd/passwd/pureftpd.passwd -m -u ftpuser -d /home/ftpusers/copycat
     image: vimagick/pure-ftpd
     container_name: ftp_songs
     networks:
@@ -21,7 +22,11 @@ services:
     ports:
       - "21:21"
     volumes:
-      - ./data/copycat:/home/copycat
+      - ./data/copycat:/home/ftpusers/copycat
+
+    environment:
+      PUBLICHOST: "localhost"
+
     privileged: true
     restart: always
 

@@ -25,12 +25,13 @@ SECRET_KEY = 'au!3-eunf+nr&pz77bo=b5&4s=zoswo8)z5n%#8x&rgrn978c='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'player.apps.PlayerConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
