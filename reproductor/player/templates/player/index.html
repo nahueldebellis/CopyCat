@@ -7,10 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="http://localhost/player/songs/" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="csrfmiddlewaretoken" id="h" value="FHoHSlA6NcIuxWZrcY60RuGSDbsZHBDXdK3UQHbRkmPuLSzmSoBGDpGEGLSV61cR">
+    <form action="/player/songs/" method="post" enctype="multipart/form-data">{% csrf_token %}
         name: <input type="text" name='name'>
         artist: <input type="text" name="artist" id="">
+        duration: <input type="number" name="duration" id="">
+        year: <input type="number" name="year" id="">
         gender: <input type="text" name="gender" id="">
         album: <input type="text" name="album" id="">
         image: <input type="file" name='image' id="image" alt="asd">

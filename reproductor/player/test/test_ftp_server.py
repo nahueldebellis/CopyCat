@@ -1,12 +1,12 @@
 from ftplib import FTP
+import os
 from wave import open as open_wav
 
 def server():
     ftp = FTP(host='ftp_songs')
-    login_status = ftp.login(user='copycat', passwd='quetepasaman1234')
+    ftp.login(user='copycat', passwd='quetepasaman1234')
     with open_wav('europa.wav', 'rb') as data:
         binary_data = data.readframes(data.getnframes())
-    ftp.storbinary('STOR %s' % os.path.basename("europa.wav"), binary_data, 1024)
-    fp.close()
+    ftp.storbinary('STOR %s' % '/home.ftpusers/copycat/song', binary_data, 1024)
 
 server()
