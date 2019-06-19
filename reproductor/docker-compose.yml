@@ -22,11 +22,9 @@ services:
     ports:
       - "21:21"
     volumes:
-      - ./data/copycat:/home/ftpusers/copycat
-
+      - ./ftp_data/copycat:/home/ftpusers/copycat
     environment:
       PUBLICHOST: "localhost"
-
     privileged: true
     restart: always
 

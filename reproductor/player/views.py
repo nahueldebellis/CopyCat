@@ -26,7 +26,7 @@ class Song(View):
             duration = request.POST['duration'],
             gender = request.POST['gender'],
             year = request.POST['year'],
-            image = request.FILES['image'],
+            #image = request.FILES['image'],
             path = self.destination,
         )
         save_model.save()
