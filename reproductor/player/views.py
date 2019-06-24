@@ -6,6 +6,19 @@ from .models import Song as song
 from os import path as Path
 import json
 
+class Search(View):
+    def get(self, request, song_name=""):
+        result = song.objects.filter(string__contains=song_name)
+        resp = {}
+        resp["id"] = result.id
+        resp["name"] = result.name
+        resp["author"] = result.author
+        resp["album"] = result.album
+        return HttpResponse(json.dumps(resp), content_type="application/json")
+
+    def post(self):
+        pass
+
 class Song(View):
     destination = '/songs/'
     ftp = FTP()
@@ -26,9 +39,10 @@ class Song(View):
             duration = request.POST['duration'],
             gender = request.POST['gender'],
             year = request.POST['year'],
-            #image = request.FILES['image'],
+            image = request.FILES['image'],
             path = self.destination,
         )
+
         save_model.save()
 
         song_file = request.FILES['file']
@@ -41,10 +55,10 @@ class Song(View):
 
         return HttpResponse(json.dumps(response), content_type="application/json")
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs, song_name=""):
         #return render(request, 'player/index.html')
         res = {}
-        song_name = self.kwargs['s']
+        #song_name = self.kwargs['s']
         r = BytesIO()
         model_song = Song.objects.get(name=song_name)
         location_song = '%s%s.wav' % (self.destination, song_name) # get song location in ftp server reading the model path
@@ -55,3 +69,4 @@ class Song(View):
         response['Content-Type'] ='audio/wav'
         response['Content-Length'] = Path.getsize(location_song)
         return response
+
