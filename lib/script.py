@@ -10,7 +10,21 @@ from scipy.io import wavfile
 samplingFrequency, signalData = wavfile.read('Do.wav')
 a = signalData[::4]
 a = a[:,1]
-print(samplingFrequency)    
+print(samplingFrequency)
+
+for n in range(nFrames):
+	xFrame[:,n] = x[start:start+nfft] 
+	start = start + nfft - hop_size 
+	timestamp[n] = n*(nfft-hop_size)/fs
+	chroma[:,n] = compute_chroma(xFrame[:,n],fs)
+
+
+	"""Correlate 12D chroma vector with each of 24 major and minor chords"""
+	cor_vec = np.zeros(24)
+	for ni in range(24):
+		cor_vec[ni] = np.correlate(chroma[:,n], np.array(templates[ni])) 
+	max_cor[n] = np.max(cor_vec)
+	id_chord[n] =  np.argmax(cor_vec) + 1
     
 
 # Plot the signal read from wav file
