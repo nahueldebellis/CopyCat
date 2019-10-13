@@ -36,11 +36,9 @@ for chord in range(12):
 
 #debugging
 for key,value in template.items():
-	print key, value
+	print(key, value)
 
 #save as JSON file
 with open('chord_templates.json', 'w') as fp:
-    json.dump(template, fp, sort_keys = False)
-    print 'Saved succesfully to JSON file'
-
-	 
+	json.dump(template, fp, sort_keys = False)
+	print('Saved succesfully to JSON file')

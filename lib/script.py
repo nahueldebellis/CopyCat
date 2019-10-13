@@ -1,7 +1,7 @@
 #import the pyplot and wavfile modules 
 
 import matplotlib.pyplot as plot
-
+import numpy as np
 from scipy.io import wavfile
 
 
@@ -10,9 +10,12 @@ from scipy.io import wavfile
 samplingFrequency, signalData = wavfile.read('Do.wav')
 a = signalData[::4]
 a = a[:,1]
+nfft = 8192
+hop_size = 1024
+nFrames = int(np.round(len(a)/(nfft-hop_size)))
 print(samplingFrequency)
 
-for n in range(nFrames):
+'''for n in range(nFrames):
 	xFrame[:,n] = x[start:start+nfft] 
 	start = start + nfft - hop_size 
 	timestamp[n] = n*(nfft-hop_size)/fs
@@ -25,13 +28,12 @@ for n in range(nFrames):
 		cor_vec[ni] = np.correlate(chroma[:,n], np.array(templates[ni])) 
 	max_cor[n] = np.max(cor_vec)
 	id_chord[n] =  np.argmax(cor_vec) + 1
-    
+    '''
 
-# Plot the signal read from wav file
 
 plot.subplot(211)
 
-plot.title('Spectrogram of a wav file with piano music')
+plot.title('espectograma cancion')
 
  
 
