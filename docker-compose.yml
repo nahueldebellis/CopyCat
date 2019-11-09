@@ -1,0 +1,46 @@
+version: '3.0'
+services:
+  player:
+    build: ./reproductor/.
+    container_name: web_songs
+    command: gunicorn mann.wsgi:application --bind 0.0.0.0:8080
+    volumes:
+      - /reproductor:/copycat
+    ports:
+      - "8000:8080"
+    networks:
+      - backend
+  react:
+    build: ./design/.
+    container_name: react_design
+    volumes:
+      - ./design:/design
+    ports:
+      - "80:3000"
+    command:  npm run dev
+
+  welcome-db:
+    image: postgres
+    container_name: db_welcome
+    networks:
+      - backend
+
+  welcome:
+    build: ./login/.
+    container_name: web_welcome
+    command: gunicorn mann.wsgi:application --bind 0.0.0.0:8000 
+    volumes:
+      - ./login:/copycat
+    ports:
+      - "88:8000"
+    networks:
+      - backend
+    environment:
+      - SQL_USER:postgres
+      - SQL_PASSWORD:postgres
+    depends_on:
+      - welcome-db
+
+networks:
+  backend:
+    driver: bridge  
