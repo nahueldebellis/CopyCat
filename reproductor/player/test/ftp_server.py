@@ -6,11 +6,18 @@ from io import BytesIO
 TESTDATA_FILENAME = os.path.join(os.path.dirname(__file__), 'europa.wav')
 
 def server():
-    ftp = FTP(host='ftp_songs')
-    ftp.login(user='copycat', passwd='quetepasaman1234')
+    print(TESTDATA_FILENAME)
+    ftp = FTP()
+    ftp.set_debuglevel(2)
+    ftp.connect('ftp', 21)
+    ftp.set_pasv(False)
+    ftp.login('username','mypass')
+    binary_data = b''
+    
+    
     with open(TESTDATA_FILENAME, 'rb') as data:
         binary_data = data.read()
     song = BytesIO(binary_data)
-    ftp.storbinary('STOR %s.wav' % 'test_song', song)
+    ftp.storbinary('STOR %s.wav' % 'europa', song)
 
 server()

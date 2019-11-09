@@ -1,6 +1,5 @@
 {
   "name": "copycat",
-  "homepage": "http://10.0.75.1:8080/a/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

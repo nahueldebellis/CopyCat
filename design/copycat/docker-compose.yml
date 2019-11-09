@@ -8,4 +8,4 @@ services:
       - .:/design
     ports:
       - "80:3000"
-    command: nodemon -L start
+    command:  npm start

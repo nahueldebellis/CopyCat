@@ -1,41 +1,46 @@
 import React from 'react';
 import cokiee from '../Token';
-import fondo from './fondo.jpg';
-import './reproductor.css';
-import { Link, withRouter } from 'react-router-dom';
+//import fondo from './fondo.jpg';
+///import { Link, withRouter } from 'react-router-dom';
 /* <audio id="miAudio" src="parte1.mp3"></audio> */
 class Reproductor extends React.Component {
   constructor(){
     super();
     this.duracion = 0;
-    this.intzerval;
+    this.interval = 10;
     this.miAudio=document.getElementById("miAudio");
     this.csrftoken = cokiee;
   }
 
   iniciar(){
-    if(this.miAudio.paused){
-      this.miAudio.play();
-      this.interval=setInterval(this.mostrarDuracion,100);
-      document.getElementById("iniciar").innerHTML="&#8545;";
+      if(this.miAudio !== null){
+        if(this.miAudio.paused){
+            this.miAudio.play();
+            this.interval=setInterval(this.mostrarDuracion,100);
+            document.getElementById("iniciar").innerHTML="&#8545;";
+        }
+        else{
+            this.miAudio.pause();
+            clearInterval(this.interval);
+            document.getElementById("iniciar").innerHTML="&#8227;";
+        }
+      }
+        else
+            console.log('nno');
 
-    }
-    else{
-      this.miAudio.pause();
-      clearInterval(this.interval);
-      document.getElementById("iniciar").innerHTML="&#8227;";
-    }
+
   }
 
   reiniciar(){
-    this.miAudio.currentTime=0;
-      if(this.miAudio.paused)
-        {
-        this.miAudio.play();
-        this.interval=setInterval(this.mostrarDuracion,100);
-        }
+    if(this.miAudio !== null){
+      this.miAudio.play();
+      this.interval=setInterval(this.mostrarDuracion,100);
+    }
+    else
+        console.log('no')
 
   }
+
 
   mostrarDuracion(){
     if(this.duracion>0)
@@ -55,8 +60,8 @@ class Reproductor extends React.Component {
             <span></span>
             <div></div>
           <div id="botones">
-            <button id="iniciar" onclick="iniciar()">&#8227;</button>
-            <button id="reiniciar" onclick="reiniciar()">&#8635;</button>
+            <button id="iniciar" onClick={this.iniciar()}>&#8227;</button>
+            <button id="reiniciar" onClick={this.reiniciar()}>&#8635;</button>
           </div>
       </div>
     );
