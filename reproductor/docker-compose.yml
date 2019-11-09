@@ -3,31 +3,8 @@ services:
   web:
     build: .
     container_name: web_songs
-    command: gunicorn mann.wsgi:application --bind 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/copycat
     ports:
-      - "80:8000"
-    networks:
-      - backend
-    depends_on:
-      - ftp-song
-
-  ftp-song:
-    #pure-pw useradd copycat -f /etc/pure-ftpd/passwd/pureftpd.passwd -m -u ftpuser -d /home/ftpusers/copycat
-    image: vimagick/pure-ftpd
-    container_name: ftp_songs
-    networks:
-      - backend
-    ports:
-      - "21:21"
-    volumes:
-      - ./ftp_data/copycat:/home/ftpusers/copycat
-    environment:
-      PUBLICHOST: "localhost"
-    privileged: true
-    restart: always
-
-networks:
-  backend:
-    driver: bridge
+      - "8000:8000"

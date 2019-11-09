@@ -5,7 +5,6 @@ from io import BytesIO
 # Create your tests here.
 
 TESTDATA_FILENAME = os.path.join(os.path.dirname(__file__), 'europa.wav')
-
 class Player(TestCase):      
     def upload(self):
         client = Client() # setup
@@ -16,7 +15,7 @@ class Player(TestCase):
 
         song = binary_song
         
-        response = client.post('/player/songs/', { 
+        response = client.post('/player/songs/', data={ 
             'name': 'europa', 
             'duration': 123,
             'year': 2021,
@@ -28,6 +27,4 @@ class Player(TestCase):
 
         print(response)
         self.assertEqual(response.status_code, 201)
-
-
 
