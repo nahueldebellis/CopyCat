@@ -10,7 +10,7 @@ services:
   web:
     build: .
     container_name: web_welcome
-    command: gunicorn mann.wsgi:application --bind 0.0.0.0:8000 
+    command: python manage.py runserver 0.0.0.0:8000 
     volumes:
       - .:/copycat
     ports:

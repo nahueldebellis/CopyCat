@@ -4,7 +4,6 @@ from django.db import models
 class Users(models.Model):
     firstname = models.CharField(max_length=20, default='nan')
     lastname = models.CharField(max_length=20, default='nan')
-    confirmation = models.BooleanField(default=False)
     born_date = models.DateField(null=True)
     sex = models.CharField(max_length=10, default='nan')
     email = models.CharField(max_length=50, default='nan')
