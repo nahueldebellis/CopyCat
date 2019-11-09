@@ -7,12 +7,13 @@ import hashlib
 
 class Login(View):
     def post(self, request):
+        
         response_data = {}
         try:
-            hash_pass = hashlib.sha1( bytes(request.POST['password'], 'utf-8'))
+            hash_pass = hashlib.sha1(request.POST['password'].encode())
             hash_pass = hash_pass.hexdigest()
             user_exist = Users.objects.filter(email=request.POST['email'], password=hash_pass)
-            if user_exist != [] or cookie:
+            if user_exist:
                 response_data['ok'] = 'user logged'
             else:
                 response_data['error'] = 'email or password wrong'
@@ -26,8 +27,8 @@ class Register(View):
         response_data = {}
         try:
             user_exist = Users.objects.filter(email=request.POST['email'])
-            if user_exist == []:
-                hash_pass = hashlib.sha1( bytes(request.POST['password'], 'utf-8'))
+            if not len(user_exist):
+                hash_pass = hashlib.sha1(request.POST['password'].encode())
                 hash_pass = hash_pass.hexdigest()
                 user = Users(
                     firstname=request.POST['nombre'], lastname=request.POST['apellido'], 

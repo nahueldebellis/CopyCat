@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'welcome.apps.WelcomeConfig',
-    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +78,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
-        'HOST': 'db', 
+        'HOST': 'db_welcome', 
         'USER': os.getenv('SQL_USER', 'postgres'),
         'PORT': 5432,
         'PASSWORD': os.getenv('SQL_PASSWORD', 'postgres'),
