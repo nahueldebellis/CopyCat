@@ -4847,7 +4847,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 1:
+/***/ 3:
 /*!********************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fregister&absolutePagePath=%2Fdesign%2Fpages%2Fregister.js ***!
   \********************************************************************************************************/
@@ -4870,5 +4870,5 @@ module.exports = dll_e9ad7d891b372a4221cf;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[3,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=register.js.map
